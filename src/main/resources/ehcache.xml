@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd">
+
+	<defaultCache
+                maxElementsInMemory="50"
+                eternal="false"
+                overflowToDisk="false"
+                memoryStoreEvictionPolicy="LFU" />
+                
+        <cache name="studentsCache"
+        		timeToLiveSeconds="3600"
+                maxElementsInMemory="10"
+                eternal="false"
+                overflowToDisk="false"
+                memoryStoreEvictionPolicy="LFU" />
+                 
+       
+</ehcache>
+
+<!-- see : http://ehcache.org/ehcache.xml for full info -->
+<!-- see : http://ehcache.org/documentation/2.4/user-guide/configuration for cache configuration -->

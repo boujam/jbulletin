@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+    http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd"
+   version="1.0">
+
+ <persistence-unit name="postgreSqlDatabase">
+
+       <properties>
+          <!-- Only scan and detect annotated entities -->
+           <property name="hibernate.archive.autodetection" value="class"/>
+
+          <!-- SQL stdout logging     -->
+          <property name="hibernate.show_sql" value="true"/>
+          <property name="hibernate.format_sql" value="true"/>
+          <property name="use_sql_comments" value="true"/>
+		
+          <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+          <property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1:5432/JBULLETIN?charset='UTF8'"/>
+          <property name="hibernate.connection.username" value="ryc2013"/>
+          <property name="hibernate.connection.password" value="ryc2013"/>
+
+          <property name="hibernate.c3p0.min_size" value="5"/>
+          <property name="hibernate.c3p0.max_size" value="20"/>
+          <property name="hibernate.c3p0.timeout" value="300"/>
+          <property name="hibernate.c3p0.max_statements" value="50"/>
+          <property name="hibernate.c3p0.idle_test_period" value="3000"/>
+          
+<!--           To use the batch processing feature -->
+<!-- 			   Because by default, Hibernate will cache all the persisted objects in the session-level cache and  -->
+<!-- 			   ultimately your application would fall over with an OutOfMemoryException somewhere around the 50,000th row.  -->
+<!-- 			   You can resolve this problem if you are using batch processing with Hibernate. -->
+<!-- 			   http://www.tutorialspoint.com/hibernate/hibernate_batch_processing.htm -->
+<!--           <property name="hibernate.jdbc.batch_size" value="100"/> -->
+
+<!--           http://ehcache.org/documentation/integrations/hibernate  -->
+          <property name="persistenceUnitName" value="postgreSqlDatabase" />
+  
+<!-- ********************************************************************************************* -->
+<!-- 	cache Manager used by Hibernate -->
+<!-- ********************************************************************************************* --> 
+<!--           <property name="hibernate.cache.provider_class" value="org.hibernate.cache.EhCacheProvider" /> -->
+<!--           <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.EhCacheRegionFactory" /> -->
+<!--           <property name="hibernate.cache.region.factory_class" value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory" /> -->
+<!--           <property name="hibernate.cache.use_second_level_cache" value="true" /> -->
+<!--  		  <property name="hibernate.cache.use_query_cache" value="true" /> -->
+         
+    		   <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+	
+<!-- 		  <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/> -->
+
+			<!-- JDBC connection pool (use the built-in) -->
+<!--           <property name="connection.pool_size" value="1" /> -->
+		   
+           <!-- Create the database schema when this test.persistence unit is deployed, drop
+                it (clean the database) when it is undeployed
+           -->
+           <property name="hibernate.hbm2ddl.auto" value="create" />
+
+      </properties>
+   </persistence-unit>
+
+
+</persistence>
