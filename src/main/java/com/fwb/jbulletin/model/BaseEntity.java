@@ -1,13 +1,15 @@
 package com.fwb.jbulletin.model;
 
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass
-public class baseEntity {
+public class BaseEntity {
 
-	@Id @GeneratedValue
+	@Id
+	@GeneratedValue (strategy = GenerationType.AUTO)
 	private long id;
 
 	public long getId() {

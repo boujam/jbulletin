@@ -18,8 +18,7 @@
 <!--     annotations in the component classes, which is usually desired for autodetected components -->
 <!--     (without external configuration)       -->
     <context:component-scan base-package="com.fwb.jbulletin">
-<!--         <context:exclude-filter expression="" -->
-<!--         type="annotation"/> -->
+        <context:exclude-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
     </context:component-scan>
 
 <!--       Activates various annotations to be detected in bean classes: Spring's @Required and -->
