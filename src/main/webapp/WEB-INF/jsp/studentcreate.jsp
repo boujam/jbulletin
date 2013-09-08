@@ -18,7 +18,7 @@
 			<td><form:label path="lastName"></form:label><td>
 			<td><form:input path="lastName" /><td>
 		</td>
-		<td><input type="submit" value="sauver"/>
+		<td><input type="submit" value="create"/>
 	</table>
 </form:form>
 </html>

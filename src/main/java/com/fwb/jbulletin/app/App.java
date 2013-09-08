@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.fwb.jbulletin.dao.StudentDao;
 import com.fwb.jbulletin.service.StudentService;
+import com.fwb.jbulletin.util.PopulateDatabase;
 
 public class App {
 
@@ -14,6 +15,10 @@ public class App {
 
 		StudentService ss = (StudentService) context.getBean("studentService");
 		StudentDao sDao = (StudentDao) context.getBean("studentDao");
+	
+		PopulateDatabase pd = (PopulateDatabase) context.getBean("populateDatabase");
+		pd.createStudents();
+		pd.createClassroom();
 		
 		System.out.println("end");
 		

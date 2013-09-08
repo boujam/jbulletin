@@ -11,6 +11,7 @@
 <body>
 <h1>Welcome to JBulletin</h1>
 <a href="./studentcreate">Create a student</a>
+<a href="./assignmentcreate">assign a student to a classroom</a>
 <h2></h2>
 </body>
 </html>

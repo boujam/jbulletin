@@ -8,7 +8,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class IndexController {
 
 	IndexController(){
-		System.out.println("construct bean : [IndexController] " + this.toString());
+		System.out.println("construct bean : [indexController] " + this.toString());
 	}
 	
 

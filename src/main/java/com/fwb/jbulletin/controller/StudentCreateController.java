@@ -10,11 +10,11 @@ import com.fwb.jbulletin.model.Student;
 import com.fwb.jbulletin.service.StudentService;
 
 @Controller
-public class studentCreateController {
+public class StudentCreateController {
 
 	@Autowired StudentService studentService;
 
-	studentCreateController(){
+	StudentCreateController(){
 		System.out.println("construct bean : [studentCreateController] " + this.toString());
 	}
 	
@@ -27,7 +27,7 @@ public class studentCreateController {
 	}
 	
 	@RequestMapping("studentcreatesubmit")
-	public ModelAndView studentCreate(@ModelAttribute("student") Student student){
+	public ModelAndView studentCreateSubmit(@ModelAttribute("student") Student student){
 		studentService.addStudent(student);
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("student",student);

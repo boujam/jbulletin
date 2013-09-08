@@ -57,7 +57,13 @@
            <!-- Create the database schema when this test.persistence unit is deployed, drop
                 it (clean the database) when it is undeployed
            -->
-           <property name="hibernate.hbm2ddl.auto" value="create" />
+           
+<!--            validate: validate the schema, makes no changes to the database. -->
+<!-- 			update: update the schema. -->
+<!-- 			create: creates the schema, destroying previous data. -->
+<!-- 			create-drop: drop the schema at the end of the session. -->
+           
+           <property name="hibernate.hbm2ddl.auto" value="validate" />
 
       </properties>
    </persistence-unit>
