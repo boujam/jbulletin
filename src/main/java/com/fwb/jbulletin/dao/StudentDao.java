@@ -2,7 +2,9 @@ package com.fwb.jbulletin.dao;
 
 import java.util.List;
 
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
+
 import com.fwb.jbulletin.model.Student;
 
 @Repository
@@ -13,6 +15,7 @@ public class StudentDao extends BaseDao{
 		System.out.println("create bean [studentDao] " + this.toString());
 	}
 
+	@Cacheable("studentsCache")
 	public List<Student> findall () {
 		System.out.println("loading students from table STUDENT");
 		List <Student> students = (List<Student>) em.createQuery("select s from Student s").getResultList();

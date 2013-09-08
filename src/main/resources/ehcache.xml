@@ -13,7 +13,12 @@
                 eternal="false"
                 overflowToDisk="false"
                 memoryStoreEvictionPolicy="LFU" />
-                 
+         <cache name="classroomsCache"
+        		timeToLiveSeconds="3600"
+                maxElementsInMemory="10"
+                eternal="false"
+                overflowToDisk="false"
+                memoryStoreEvictionPolicy="LFU" />        
        
 </ehcache>
 
