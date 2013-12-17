@@ -18,9 +18,14 @@
           <property name="use_sql_comments" value="true"/>
 		
           <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
+<!-- to connect to localhost DB -->
           <property name="hibernate.connection.url" value="jdbc:postgresql://127.0.0.1:5432/JBULLETIN?charset='UTF8'"/>
           <property name="hibernate.connection.username" value="ryc2013"/>
           <property name="hibernate.connection.password" value="ryc2013"/>
+<!-- to connect to Distant DB -->
+<!--           <property name="hibernate.connection.url" value="jdbc:postgresql://176.31.240.9:15432/jbulletin?charset='UTF8'"/> -->
+<!--           <property name="hibernate.connection.username" value="alfresco"/> -->
+<!--           <property name="hibernate.connection.password" value="NifoSale#5658"/> -->
 
           <property name="hibernate.c3p0.min_size" value="5"/>
           <property name="hibernate.c3p0.max_size" value="20"/>
@@ -63,7 +68,7 @@
 <!-- 			create: creates the schema, destroying previous data. -->
 <!-- 			create-drop: drop the schema at the end of the session. -->
            
-           <property name="hibernate.hbm2ddl.auto" value="validate" />
+           <property name="hibernate.hbm2ddl.auto" value="create" />
 
       </properties>
    </persistence-unit>

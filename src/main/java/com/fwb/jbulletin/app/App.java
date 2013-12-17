@@ -15,10 +15,9 @@ public class App {
 
 		StudentService ss = (StudentService) context.getBean("studentService");
 		StudentDao sDao = (StudentDao) context.getBean("studentDao");
-	
+
 		PopulateDatabase pd = (PopulateDatabase) context.getBean("populateDatabase");
-		pd.createStudents();
-		pd.createClassroom();
+		pd.start();
 		
 		System.out.println("end");
 		

@@ -48,6 +48,14 @@ public class Student extends BaseEntity {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+	public List<Assignment> getAssignments() {
+		return assignments;
+	}
+
+	public void setAssignments(List<Assignment> assignments) {
+		this.assignments = assignments;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
