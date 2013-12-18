@@ -6,8 +6,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Year extends BaseEntity {
@@ -19,11 +18,9 @@ public class Year extends BaseEntity {
 
 	private Date academicYear;
 
-	@ManyToMany @JoinTable(name="year_school",
-				joinColumns=@JoinColumn(name="year_id"),
-				inverseJoinColumns=@JoinColumn(name="school_id"))
-	List<School> schools = new ArrayList<School>();
-	
+	@OneToMany @JoinColumn(name="year_id")
+	List<Classroom> classrooms = new ArrayList<Classroom>();
+		
 	public Year() {
 		System.out.println("inside constructor of Class Year : " + this.toString());
 	}
@@ -35,13 +32,13 @@ public class Year extends BaseEntity {
 	public void setAcademicYear(Date academicYear) {
 		this.academicYear = academicYear;
 	}
-				
-	public List<School> getSchools() {
-		return schools;
+	
+	public List<Classroom> getClassrooms() {
+		return classrooms;
 	}
 
-	public void setSchools(List<School> schools) {
-		this.schools = schools;
+	public void setClassrooms(List<Classroom> classrooms) {
+		this.classrooms = classrooms;
 	}
 
 	public static long getSerialversionuid() {

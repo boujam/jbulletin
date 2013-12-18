@@ -52,7 +52,7 @@ public class AssignmentCreateController {
 		assignment.setClassroom(classroom);
 		assignment.setSignInDate(new Date());
 		assignment.setComment(comment);
-		assignmentService.addAssignment(assignment);
+		assignmentService.create(assignment);
 		
 		return new ModelAndView("index");
 	}

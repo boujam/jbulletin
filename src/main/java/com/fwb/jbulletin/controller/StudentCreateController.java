@@ -28,7 +28,7 @@ public class StudentCreateController {
 	
 	@RequestMapping("studentcreatesubmit")
 	public ModelAndView studentCreateSubmit(@ModelAttribute("student") Student student){
-		studentService.addStudent(student);
+		studentService.create(student);
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject("student",student);
 		return mv;

@@ -18,6 +18,8 @@ public class Assignment extends BaseEntity {
 	
 	private Date signInDate;
 	
+	private Date signOutDate;
+	
 	private String comment;
 	
 	public Assignment() {
@@ -46,6 +48,14 @@ public class Assignment extends BaseEntity {
 
 	public void setSignInDate(Date signInDate) {
 		this.signInDate = signInDate;
+	}
+	
+	public Date getSignOutDate() {
+		return signOutDate;
+	}
+
+	public void setSignOutDate(Date signOutDate) {
+		this.signOutDate = signOutDate;
 	}
 
 	public String getComment() {

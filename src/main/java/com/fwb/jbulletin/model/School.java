@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,11 +17,10 @@ public class School extends BaseEntity {
 
 	private String name;
 	
-	@ManyToMany (mappedBy="schools")
-	List<Year> years = new ArrayList<Year>();
+	private String network;
 	
 	@OneToMany @JoinColumn(name="school_id")
-	List<Classroom> classrooms = new ArrayList<Classroom>();
+	List<Year> years = new ArrayList<Year>();
 	
 	public School() {
 		System.out.println("inside constructor of Class School : " + this.toString());
@@ -36,20 +34,20 @@ public class School extends BaseEntity {
 		this.name = name;
 	}
 		
+	public String getNetwork() {
+		return network;
+	}
+
+	public void setNetwork(String network) {
+		this.network = network;
+	}
+
 	public List<Year> getYears() {
 		return years;
 	}
 
 	public void setYears(List<Year> years) {
 		this.years = years;
-	}
-	
-	public List<Classroom> getClassrooms() {
-		return classrooms;
-	}
-
-	public void setClassrooms(List<Classroom> classrooms) {
-		this.classrooms = classrooms;
 	}
 
 	public static long getSerialversionuid() {

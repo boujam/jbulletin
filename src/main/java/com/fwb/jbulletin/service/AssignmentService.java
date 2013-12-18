@@ -7,9 +7,6 @@ import com.fwb.jbulletin.model.Assignment;
 @Service
 public class AssignmentService extends BaseService {
 
-	public void addAssignment (Assignment assignment) {
-		em.persist(assignment);
-	}
 	
 	
 }

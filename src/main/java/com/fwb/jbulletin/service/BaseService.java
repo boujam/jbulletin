@@ -2,12 +2,25 @@ package com.fwb.jbulletin.service;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+
 import org.springframework.transaction.annotation.Transactional;
 
+
 @Transactional
-public class BaseService {
+abstract public class BaseService {
 
 	@PersistenceContext protected EntityManager em;
-	protected boolean isManaged;
+	
+	
+	/**
+	 * CRUD operation : to create a record
+	 */
+	public void create (Object object) {
+		em.persist(object);
+	}
 
+	public void update (Object object) {
+		em.merge(object);
+	}
+	
 }

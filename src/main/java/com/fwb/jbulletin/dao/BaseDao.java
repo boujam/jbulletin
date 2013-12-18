@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Transactional
-public class BaseDao {
+abstract public class BaseDao {
 
 	@PersistenceContext EntityManager em;
 }
