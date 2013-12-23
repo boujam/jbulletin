@@ -5,26 +5,32 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fwb.jbulletin.dao.YearDao;
+import com.fwb.jbulletin.dao.AcademicYearDao;
 import com.fwb.jbulletin.model.Classroom;
+import com.fwb.jbulletin.model.Course;
 import com.fwb.jbulletin.model.School;
 import com.fwb.jbulletin.model.Student;
-import com.fwb.jbulletin.model.Year;
+import com.fwb.jbulletin.model.AcademicYear;
+import com.fwb.jbulletin.model.Teacher;
 
 @Service
 public class PopulateDatabaseService extends BaseService {
 
-	@Autowired YearDao yearDao;
+	@Autowired AcademicYearDao academicYearDao;
 	@Autowired ClassroomService classroomService;
 	@Autowired YearService yearService;
 	@Autowired SchoolService schoolService;
 	@Autowired StudentService studentService;
+	@Autowired CourseService courseService;
+	@Autowired TeacherService teacherService;
 	
 	public void start() {
 
 		createSchool();
 		createClassroom();
 		createStudents();
+		createCourse();
+		createTeacher();
 
 	}
 	
@@ -32,13 +38,13 @@ public class PopulateDatabaseService extends BaseService {
 		
 		for (int i=1; i<5;i++) {   
 			
-			Year year = new Year();
-			year.setAcademicYear(new Date());
-			yearService.create(year);
+			AcademicYear academicYear = new AcademicYear();
+			academicYear.setYear(new Date());
+			yearService.create(academicYear);
 			
 			School school = new School();
 			school.setName("School " + i);
-			school.getYears().add(year);
+			school.getYears().add(academicYear);
 			schoolService.create(school);
 			
 		}
@@ -47,7 +53,7 @@ public class PopulateDatabaseService extends BaseService {
 
 		for (int u=1; u<8;) {
 		
-			Year year = yearDao.findYearById(u);
+			AcademicYear academicYear = academicYearDao.findYearById(u);
 			u=u+2;
 		
 			for (int i=1; i<7;i++) {   
@@ -58,8 +64,8 @@ public class PopulateDatabaseService extends BaseService {
 				classroom1.setCreationDate(new Date());
 				classroomService.create(classroom1);
 				
-				year.getClassrooms().add(classroom1);
-				yearService.update(year);
+				academicYear.getClassrooms().add(classroom1);
+				yearService.update(academicYear);
 				
 				Classroom classroom2 = new Classroom();
 				classroom2.setReference(i + " B");
@@ -67,8 +73,8 @@ public class PopulateDatabaseService extends BaseService {
 				classroom2.setCreationDate(new Date());
 				classroomService.create(classroom2);
 	
-				year.getClassrooms().add(classroom2);
-				yearService.update(year);
+				academicYear.getClassrooms().add(classroom2);
+				yearService.update(academicYear);
 				
 				Classroom classroom3 = new Classroom();
 				classroom3.setReference(i + " C");
@@ -76,8 +82,8 @@ public class PopulateDatabaseService extends BaseService {
 				classroom3.setCreationDate(new Date());
 				classroomService.create(classroom3);
 				
-				year.getClassrooms().add(classroom3);
-				yearService.update(year);
+				academicYear.getClassrooms().add(classroom3);
+				yearService.update(academicYear);
 			}
 		
 		}
@@ -95,5 +101,53 @@ public class PopulateDatabaseService extends BaseService {
 			studentService.create(student);
 		}
 	}
+	
+	public void createCourse() {
+	
+		Course course1 = new Course();
+		course1.setName("Français");
+		course1.setHour(4);
+		courseService.create(course1);
+		
+		Course course2 = new Course();
+		course2.setName("Mathématique");
+		course2.setHour(4);
+		courseService.create(course2);
+		
+		Course course3 = new Course();
+		course3.setName("Néerlandais");
+		course3.setHour(4);
+		courseService.create(course3);
+		
+		Course course4 = new Course();
+		course4.setName("Informatique");
+		course4.setHour(1);
+		courseService.create(course4);
+		
+		Course course5 = new Course();
+		course5.setName("Physique");
+		course5.setHour(1);
+		courseService.create(course5);
+		
+		Course course6 = new Course();
+		course6.setName("Mathématique");
+		course6.setHour(2);
+		courseService.create(course6);
+		
+		
+	}
+	
+	
+	public void createTeacher() {
+		
+		for (int i=1; i<21;i++) {   
+			Teacher teacher = new Teacher();
+			teacher.setFirstName("teacher" + i);
+			teacher.setLastName("t" + i);
+			teacherService.create(teacher);
+		}
+		
+	}
+	
 	
 }

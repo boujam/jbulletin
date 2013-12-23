@@ -2,21 +2,21 @@ package com.fwb.jbulletin.dao;
 
 import org.springframework.stereotype.Repository;
 
-import com.fwb.jbulletin.model.Year;
+import com.fwb.jbulletin.model.AcademicYear;
 
 @Repository
-public class YearDao extends BaseDao {
+public class AcademicYearDao extends BaseDao {
 
-	public YearDao(){
+	public AcademicYearDao(){
 		System.out.println("create bean [yearDao] " + this.toString());
 	}
 
-	public Year findYearById (long id) {
+	public AcademicYear findYearById (long id) {
 		System.out.println("loading year by id from table YEAR");
-		Year year = (Year) em.createQuery("select y from Year y where y.id =:id")
+		AcademicYear academicYear = (AcademicYear) em.createQuery("select y from AcademicYear y where y.id =:id")
 				.setParameter("id", id)
 				.getSingleResult();
-		return year;
+		return academicYear;
 	}
 	
 }

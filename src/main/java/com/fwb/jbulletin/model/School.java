@@ -20,7 +20,7 @@ public class School extends BaseEntity {
 	private String network;
 	
 	@OneToMany @JoinColumn(name="school_id")
-	List<Year> years = new ArrayList<Year>();
+	List<AcademicYear> years = new ArrayList<AcademicYear>();
 	
 	public School() {
 		System.out.println("inside constructor of Class School : " + this.toString());
@@ -42,11 +42,11 @@ public class School extends BaseEntity {
 		this.network = network;
 	}
 
-	public List<Year> getYears() {
+	public List<AcademicYear> getYears() {
 		return years;
 	}
 
-	public void setYears(List<Year> years) {
+	public void setYears(List<AcademicYear> years) {
 		this.years = years;
 	}
 

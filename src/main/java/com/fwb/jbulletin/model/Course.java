@@ -24,7 +24,12 @@ public class Course extends BaseEntity {
 	/**
 	 * number of hour 
 	 */
-	private int hour;	
+	private int hour;
+	
+	/**
+	 * Program Reference 
+	 */
+	private String programRef;
 	
 	@ManyToMany(mappedBy="courses")
 	List<Classroom> classrooms = new ArrayList<Classroom>();
@@ -52,6 +57,14 @@ public class Course extends BaseEntity {
 
 	public void setHour(int hour) {
 		this.hour = hour;
+	}
+	
+	public String getProgramRef() {
+		return programRef;
+	}
+
+	public void setProgramRef(String programRef) {
+		this.programRef = programRef;
 	}
 
 	public List<Classroom> getClassrooms() {

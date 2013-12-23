@@ -9,28 +9,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Year extends BaseEntity {
+public class AcademicYear extends BaseEntity {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7317933684778767588L;
 
-	private Date academicYear;
+	private Date year;
 
 	@OneToMany @JoinColumn(name="year_id")
 	List<Classroom> classrooms = new ArrayList<Classroom>();
 		
-	public Year() {
+	public AcademicYear() {
 		System.out.println("inside constructor of Class Year : " + this.toString());
 	}
 	
-	public Date getAcademicYear() {
-		return academicYear;
+	public Date getYear() {
+		return year;
 	}
 
-	public void setAcademicYear(Date academicYear) {
-		this.academicYear = academicYear;
+	public void setYear(Date year) {
+		this.year = year;
 	}
 	
 	public List<Classroom> getClassrooms() {
