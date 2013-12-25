@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,8 +18,8 @@ public class School extends BaseEntity {
 	
 	private String network;
 	
-	@OneToMany @JoinColumn(name="school_id")
-	List<AcademicYear> years = new ArrayList<AcademicYear>();
+	@OneToMany(mappedBy="school")
+	private List<AcademicYear> academicYears = new ArrayList<AcademicYear>();
 	
 	public School() {
 		System.out.println("inside constructor of Class School : " + this.toString());
@@ -41,13 +40,13 @@ public class School extends BaseEntity {
 	public void setNetwork(String network) {
 		this.network = network;
 	}
-
-	public List<AcademicYear> getYears() {
-		return years;
+	
+	public List<AcademicYear> getAcademicYears() {
+		return academicYears;
 	}
 
-	public void setYears(List<AcademicYear> years) {
-		this.years = years;
+	public void setAcademicYears(List<AcademicYear> academicYears) {
+		this.academicYears = academicYears;
 	}
 
 	public static long getSerialversionuid() {

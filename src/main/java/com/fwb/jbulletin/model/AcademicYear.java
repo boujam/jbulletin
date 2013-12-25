@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -18,6 +19,9 @@ public class AcademicYear extends BaseEntity {
 
 	private Date year;
 
+	@ManyToOne @JoinColumn(nullable=false)
+	private School school;
+	
 	@OneToMany @JoinColumn(name="year_id")
 	List<Classroom> classrooms = new ArrayList<Classroom>();
 		
@@ -32,7 +36,15 @@ public class AcademicYear extends BaseEntity {
 	public void setYear(Date year) {
 		this.year = year;
 	}
-	
+		
+	public School getSchool() {
+		return school;
+	}
+
+	public void setSchool(School school) {
+		this.school = school;
+	}
+
 	public List<Classroom> getClassrooms() {
 		return classrooms;
 	}

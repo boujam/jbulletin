@@ -7,7 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Transactional
-abstract public class BaseService {
+public class BaseService {
 
 	@PersistenceContext protected EntityManager em;
 	

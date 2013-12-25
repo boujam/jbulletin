@@ -18,7 +18,7 @@ public class PopulateDatabaseService extends BaseService {
 
 	@Autowired AcademicYearDao academicYearDao;
 	@Autowired ClassroomService classroomService;
-	@Autowired YearService yearService;
+	@Autowired AcademicYearService academicYearService;
 	@Autowired SchoolService schoolService;
 	@Autowired StudentService studentService;
 	@Autowired CourseService courseService;
@@ -33,25 +33,28 @@ public class PopulateDatabaseService extends BaseService {
 		createTeacher();
 
 	}
-	
+
 	public void createSchool() {
 		
 		for (int i=1; i<5;i++) {   
+
+			School school = new School();
+			school.setName("School " + i);
+			schoolService.create(school);
 			
 			AcademicYear academicYear = new AcademicYear();
 			academicYear.setYear(new Date());
-			yearService.create(academicYear);
+			academicYear.setSchool(school);
+			academicYearService.create(academicYear);
 			
-			School school = new School();
-			school.setName("School " + i);
-			school.getYears().add(academicYear);
-			schoolService.create(school);
-			
+			System.out.println("ok");
+	
 		}
 	}
+	
 	public void createClassroom() {
 
-		for (int u=1; u<8;) {
+		for (int u=2; u<9;) {
 		
 			AcademicYear academicYear = academicYearDao.findYearById(u);
 			u=u+2;
@@ -65,7 +68,7 @@ public class PopulateDatabaseService extends BaseService {
 				classroomService.create(classroom1);
 				
 				academicYear.getClassrooms().add(classroom1);
-				yearService.update(academicYear);
+				academicYearService.update(academicYear);
 				
 				Classroom classroom2 = new Classroom();
 				classroom2.setReference(i + " B");
@@ -74,7 +77,7 @@ public class PopulateDatabaseService extends BaseService {
 				classroomService.create(classroom2);
 	
 				academicYear.getClassrooms().add(classroom2);
-				yearService.update(academicYear);
+				academicYearService.update(academicYear);
 				
 				Classroom classroom3 = new Classroom();
 				classroom3.setReference(i + " C");
@@ -83,7 +86,7 @@ public class PopulateDatabaseService extends BaseService {
 				classroomService.create(classroom3);
 				
 				academicYear.getClassrooms().add(classroom3);
-				yearService.update(academicYear);
+				academicYearService.update(academicYear);
 			}
 		
 		}
@@ -92,6 +95,7 @@ public class PopulateDatabaseService extends BaseService {
 	/**
 	 * Create random students
 	 */
+	
 	public void createStudents() {
 
 		for (int i=1; i<600;i++) {   
